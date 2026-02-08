@@ -45,10 +45,8 @@ export class CartService {
       updatedAt: new Date(),
     };
 
-    // Ajouter les items si fournis
     if (dto.items && dto.items.length > 0) {
       await this.addItemsToCart(cartData.id, dto.items);
-      // Récupérer les items ajoutés
       const cartsAfterAdd = await this.storage.read<any>(this.file);
       const cartAfterAdd = cartsAfterAdd.find((c: any) => c.id === cartData.id);
       if (cartAfterAdd) {
@@ -56,10 +54,7 @@ export class CartService {
       }
     }
 
-    // Créer l'instance Cart
     const cart = this.createCartInstance(cartData);
-    
-    // Ajouter au tableau des carts
     const allCartsData = await this.storage.read<any>(this.file) || [];
     allCartsData.push(cartData);
     await this.storage.write(this.file, allCartsData);
@@ -68,7 +63,6 @@ export class CartService {
   }
 
   async addItem(cartId: string, productId: string, quantity: number = 1): Promise<Cart> {
-    // Vérifier que le produit existe
     const products = await this.storage.read<Product>(this.productsFile);
     const product = products.find(p => p.id === productId);
     
@@ -76,7 +70,6 @@ export class CartService {
       throw new NotFoundException('Product not found');
     }
 
-    // Vérifier le stock
     if (product.stock < quantity) {
       throw new BadRequestException(`Insufficient stock. Available: ${product.stock}`);
     }
@@ -92,10 +85,8 @@ export class CartService {
     const existingItemIndex = cartData.items.findIndex((item: CartItem) => item.productId === productId);
 
     if (existingItemIndex !== -1) {
-      // Mettre à jour la quantité
       cartData.items[existingItemIndex].quantity += quantity;
     } else {
-      // Ajouter un nouvel item
       cartData.items.push({
         productId,
         quantity,
@@ -136,10 +127,8 @@ export class CartService {
     }
 
     if (quantity === 0) {
-      // Supprimer l'item
       cartData.items.splice(itemIndex, 1);
     } else {
-      // Vérifier le stock
       const products = await this.storage.read<Product>(this.productsFile);
       const product = products.find(p => p.id === productId);
       
@@ -208,7 +197,6 @@ export class CartService {
       throw new BadRequestException('Cart is empty');
     }
 
-    // Vérifier le stock de tous les produits
     const products = await this.storage.read<Product>(this.productsFile);
     
     for (const item of cart.items) {
@@ -225,19 +213,13 @@ export class CartService {
       }
     }
 
-    // Mettre à jour les stocks
     for (const item of cart.items) {
       const productIndex = products.findIndex(p => p.id === item.productId);
       products[productIndex].stock -= item.quantity;
     }
 
-    // Générer un ID de commande
     const orderId = randomUUID();
-    
-    // Sauvegarder les produits mis à jour
     await this.storage.write(this.productsFile, products);
-    
-    // Vider le panier
     await this.clearCart(cartId);
 
     return {
