@@ -1,0 +1,33 @@
+[
+  {
+    "id": "cat-1",
+    "name": "Électronique",
+    "description": "Produits électroniques",
+    "parentId": null,
+    "productIds": []
+  },
+  {
+    "id": "cat-2",
+    "name": "Informatique & Bureau",
+    "description": "Ordinateurs et accessoires",
+    "parentId": null,
+    "productIds": [
+      "prod-1",
+      "prod-4",
+      "prod-5"
+    ]
+  },
+  {
+    "id": "cat-3",
+    "name": "Mobile",
+    "description": "Téléphones et tablettes",
+    "parentId": null,
+    "productIds": []
+  },
+  {
+    "id": "7b1712d5-dcd9-4a62-b756-82aab4c7eff4",
+    "name": "Accessoires",
+    "description": "Accessoires divers",
+    "parentId": null
+  }
+]

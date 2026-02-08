@@ -1,0 +1,22 @@
+[
+  {
+    "id": "071ed486-d271-4e75-bafd-2b96427e06a3",
+    "userId": "john-doe",
+    "items": [
+      {
+        "productId": "prod-1",
+        "quantity": 2,
+        "price": 899,
+        "name": "Laptop HP"
+      },
+      {
+        "productId": "prod-2",
+        "quantity": 1,
+        "price": 1099,
+        "name": "iPhone 15"
+      }
+    ],
+    "createdAt": "2026-02-08T17:05:33.993Z",
+    "updatedAt": "2026-02-08T17:06:37.205Z"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "prod-1",
+    "name": "Laptop HP",
+    "price": 899,
+    "stock": 10,
+    "categoryId": null
+  },
+  {
+    "id": "prod-2",
+    "name": "iPhone 15",
+    "price": 1099,
+    "stock": 15,
+    "categoryId": null
+  },
+  {
+    "id": "prod-3",
+    "name": "Samsung TV",
+    "price": 699,
+    "stock": 8,
+    "categoryId": "cat-2"
+  },
+  {
+    "id": "prod-4",
+    "name": "Souris Logitech",
+    "price": 49,
+    "stock": 50,
+    "categoryId": null
+  },
+  {
+    "id": "prod-5",
+    "name": "iPad Air",
+    "price": 799,
+    "stock": 12,
+    "categoryId": null
+  },
+  {
+    "id": "a9b3976e-4240-4ef0-8e57-b8c7d630793b",
+    "name": "Clavier Mécanique",
+    "price": 129,
+    "stock": 20,
+    "categoryId": "cat-2"
+  }
+]
